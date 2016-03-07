@@ -3,7 +3,6 @@
  * Home page.
  */
 exports.index = function(req, res) {
-  res.render('home', {
-    title: 'Home'
-  });
+  var path = require('path');
+    res.sendFile(path.join(__dirname, '../public', 'main.html'));
 };

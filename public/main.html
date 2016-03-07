@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Laptops Homepage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+</head>
+
+<body ng-app="storeApp">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="homeCtrl">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><canvas id="myCanvas" width="200" height="50"></canvas></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#/admin">Admin</a>
+                    </li>
+                    <li>
+                        <a href="#/chat">Chat</a>
+                    </li>
+                    <li>
+                        <a href="#/find">Find Stores</a>
+                    </li>
+                </ul>
+                <div class="pull-right weather">weather: <span ng-bind="weather"></span></div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <ng-view></ng-view>
+    <!-- /.container -->
+
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Almog Chen & Gadi Gomez 2015</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="libs/jquery.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-route.min.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="libs/angular-socket-io/socket.min.js"></script>
+
+    <script src="app.js"></script>
+   <!--  <script src="controllers/homeCtrl.js"></script>
+    <script src="controllers/adminCtrl.js"></script>
+    <script src="controllers/findCtrl.js"></script>
+    <script src="controllers/chatCtrl.js"></script>
+    <script src="services/chat.js"></script> -->
+</body>
+
+</html>
