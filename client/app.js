@@ -13,8 +13,7 @@ angular.module('myApp', [
   'myApp.login',
   'myApp.password',
   'myApp.logout',
-  'myApp.home',
-  'myApp.riddles'
+  'myApp.home'
 ])
 
   .config(function($stateProvider, $mdThemingProvider, $urlRouterProvider, $authProvider) {
