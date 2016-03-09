@@ -13,7 +13,7 @@
   </head>
 
   <body layout="column">
-    <md-toolbar ng-controller="NavbarController" class="md-whiteframe-z2">
+    <md-toolbar ng-controller="NavbarController" class="md-whiteframe-z2" ng-show="isAuthenticated()">
       <div class="md-toolbar-tools" layout-margin layout-padding>
         <a ui-sref="home" md-button>MEAN Essential</a>
         <div flex>

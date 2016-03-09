@@ -8,12 +8,13 @@ angular.module('myApp.login', [])
     })
   })
 
-  .controller('LoginController', function($scope, $mdToast, $auth) {
+  .controller('LoginController', function($scope, $mdToast, $auth, $rootScope) {
     $scope.login = function() {
       $auth.login({ email: $scope.email, password: $scope.password })
         .then(loginSuccessHandler)
         .catch(loginErrorHandler);
     };
+
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider)
         .then(loginSuccessHandler)
