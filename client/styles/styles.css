@@ -3,11 +3,30 @@
     text-align: center;
     background-color: #1E88E5;
     color: white;
+    background-image: url('../images/ice-02.jpg');
+    background-size: cover;
 }
 .hero-logo {
-    width: 560px;
+    width: 110%;
     margin: 80px 0 30px 0;
+    background-color: #009688;
 }
+
+.title-logo {
+    width: 100px;
+/*    padding-top: 50px;
+    position: absolute;*/
+    
+}
+
+md-toolbar {
+    background-color: #44A69D;
+}
+
+.md-headline {
+    margin: 20px;
+}
+
 .hero-buttons {
     margin-bottom: 60px;
 }
@@ -15,9 +34,18 @@
     padding: 0 14px;
 }
 
+.login-box {
+    position: absolute;
+}
+
 .center-form {
     max-width: 768px;
     margin: 38px auto;
+    box-shadow: 0px 2px 21px 1px rgba(0,0,0,0.7);
+}
+
+.whiteframe {
+    margin: 0!important;
 }
 
 .mute-toolbar {
