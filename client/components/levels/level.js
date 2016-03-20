@@ -1,4 +1,4 @@
-angular.module('myApp.level', [])
+angular.module('myApp.level', ['myApp.level.chart'])
 
   .config( function( $stateProvider) {
     $stateProvider.state('level', {
@@ -21,5 +21,9 @@ angular.module('myApp.level', [])
     })
   })
 
-  .controller('LevelController', function() {
+  .controller('LevelController', function($scope) {
+    $scope.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+
+    $scope.model.selectedNodeData = null;
+
   });

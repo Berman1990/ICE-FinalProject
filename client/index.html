@@ -13,7 +13,7 @@
   </head>
 
   <body layout="column">
-    <md-toolbar ng-controller="NavbarController" class="md-whiteframe-z2" ng-show="isAuthenticated()">
+    <md-toolbar layout="row" ng-controller="NavbarController" class="md-whiteframe-z2" ng-show="isAuthenticated()">
       <div class="md-toolbar-tools" layout-margin layout-padding>
         <a ui-sref="home" md-button>I.C.E</a>
         <div flex>
@@ -26,7 +26,8 @@
         <a ui-sref="logout" md-button ng-if="isAuthenticated()">Logout</a>
       </div>
     </md-toolbar>
-    <div ui-view></div>
+
+    <div ui-view flex layout="column" ng-cloak> </div>
 
     <!-- Third-party Libraries -->
     <script src="bower_components/angular/angular.js"></script>
@@ -37,6 +38,7 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/satellizer/satellizer.js"></script>
+    <script src="libs/go.js"></script>
 
     <!-- Application Code -->
     <script src="app.js"></script>
@@ -52,6 +54,9 @@
     <script src="components/profile/profile.js"></script>
     <script src="components/levels/level.js"></script>
     <script src="components/stages/stages.js"></script>
+
+    <!-- Directives -->
+    <script src="directives/flowchart/flowchart.directive.js"></script>
 
 
   </body>

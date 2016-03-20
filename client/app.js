@@ -15,6 +15,7 @@ angular.module('myApp', [
   'myApp.logout',
   'myApp.home',
   'myApp.level',
+  'myApp.level.chart',
   'myApp.stages',
 ])
 
