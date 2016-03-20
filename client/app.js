@@ -13,7 +13,9 @@ angular.module('myApp', [
   'myApp.login',
   'myApp.password',
   'myApp.logout',
-  'myApp.home'
+  'myApp.home',
+  'myApp.level',
+  'myApp.stages',
 ])
 
   .config(function($stateProvider, $mdThemingProvider, $urlRouterProvider, $authProvider) {

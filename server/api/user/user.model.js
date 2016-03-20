@@ -6,6 +6,7 @@ var userSchema = new mongoose.Schema({
   password: { type: String, select: false },
   displayName: String,
   picture: String,
+  finishedStages: [],
   facebook: String,
   google: String,
   twitter: String,
