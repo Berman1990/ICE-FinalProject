@@ -15,12 +15,12 @@
     "tests"
   ],
   "dependencies": {
-    "angular-animate": "~1.4",
-    "angular-messages": "~1.4",
-    "angular-resource": "~1.4",
-    "angular-ui-router": "~0.2.14",
-    "angular": "~1.4",
-    "satellizer": "~0.11",
-    "angular-material": "~0.9.8"
+    "angular-animate": "latest",
+    "angular-messages": "latest",
+    "angular-resource": "latest",
+    "angular-ui-router": "latest",
+    "angular": "latest",
+    "satellizer": "latest",
+    "angular-material": "latest"
   }
 }
