@@ -200,12 +200,20 @@ angular.module('myApp.level.chart', [])
                         $(go.Panel, "Auto",
 
                             $(go.Shape, "NorGate", { minSize: new go.Size(50, 60), fill: "#79C900", stroke: null }),
-                            $(go.TextBlock, "Loop", { font: "bold 12pt Helvetica, Arial, sans-serif", stroke: lightText }
-                               )
+                            $(go.TextBlock, {
+                                    margin: 5,
+                                    maxSize: new go.Size(200, NaN),
+                                    wrap: go.TextBlock.WrapFit,
+                                    textAlign: "center",
+                                    editable: true,
+                                    font: "bold 12pt Helvetica, Arial, sans-serif",
+                                    stroke: '#454545'
+                                },
+                                new go.Binding("text", "times").makeTwoWay())
                         ),
-                        makePort("T", go.Spot.Top, true, true),
+                        makePort("T", go.Spot.Top, false, true),
                         makePort("R", go.Spot.Right, true, true),
-                        makePort("B", go.Spot.Bottom, true, true)
+                        makePort("B", go.Spot.Bottom, true, false)
                     ));
 
                 myDiagram.nodeTemplateMap.add("Turn",
@@ -216,7 +224,7 @@ angular.module('myApp.level.chart', [])
                                 new go.Binding("text"))
                         ),
                         makePort("T", go.Spot.Top, false, true),
-                        makePort("B", go.Spot.Bottom, true, true)
+                        makePort("B", go.Spot.Bottom, true, false)
                     ));
 
 
@@ -303,7 +311,7 @@ angular.module('myApp.level.chart', [])
                                 { category: "Empty", text: "" },
 
                                 { key:"F", text: "Step" },
-                                { key:"K", category: "Loop", text: "Loop" },
+                                { key:"K", category: "Loop", times:"3", text: "Loop" },
                                 { key:"R",category: "Turn",text: "Right" },
                                 { key:"L",category: "Turn",text: "Left " },
 
