@@ -36,26 +36,26 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
         var wall = new Object();
         var startPnt = new Object();
         startPnt.x =0;
-        startPnt.y =0;
+        startPnt.y =200;
         var endPnt = new Object();
         endPnt.x=50;
-        endPnt.y=0;
+        endPnt.y=200;
         wall.startPnt = startPnt;
         wall.endPnt = endPnt;
 
 
         var wall2 = new Object();
         var startPnt2 = new Object();
-        startPnt2.x =100;
-        startPnt2.y =50;
+        startPnt2.x =400;
+        startPnt2.y =0;
         var endPnt2 = new Object();
-        endPnt2.x=100;
-        endPnt2.y=100;
+        endPnt2.x=400;
+        endPnt2.y=200;
         wall2.startPnt = startPnt2;
         wall2.endPnt = endPnt2;
-        //$scope.controls.DrawWalls([wall,wall2]);
+        $scope.controls.DrawWalls([wall,wall2]);
 
-        $scope.controls.setCommandArray([3,1,3,1,3,1,3,1]);
+        $scope.controls.setCommandArray([2,1,2,1,2,1,2,1]);
     }
 
     $http.get('api/stages/4').success(function (data) {
