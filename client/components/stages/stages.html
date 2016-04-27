@@ -1,1 +1,27 @@
-stages
+<md-content>
+    <h1 class="md-display-3">Your Stages</h1>
+    <div flex-xs="" flex-gt-xs="50" layout="row">
+        <md-card ng-repeat="stage in stages">
+            <img ng-src="http://i.imgur.com/sUeh8np.jpg" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{stage.name}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>{{stage.description}}</p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button" aria-label="Favorite" ng-if="user.finishedStages.indexOf(stage.id) > -1">
+                    <md-icon md-svg-icon="../../images/icons/check.svg"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Settings">
+                    <md-icon md-svg-icon="../../images/icons/star.svg"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Share">
+                    <md-icon md-svg-icon="../../images/icons/arrows.svg"></md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content>

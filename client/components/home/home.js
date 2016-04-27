@@ -1,4 +1,4 @@
-angular.module('myApp.home', [])
+    angular.module('myApp.home', [])
 
   .config( function( $stateProvider) {
     $stateProvider.state('home', {
