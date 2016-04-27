@@ -32,8 +32,10 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
     $scope.controls = {};
 
     $scope.rotate = function() {
-        $scope.controls.rotatePalyer();
+        $scope.controls.setCommandArray([1]);
     }
+
+
 
     $scope.compile = function() {
         $http.post()
