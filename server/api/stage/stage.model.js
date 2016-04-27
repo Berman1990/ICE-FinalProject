@@ -7,7 +7,9 @@ var stageSchema = new mongoose.Schema({
   description: String,
   startpoint: String,
   endpoint: String,
-  objects: [String],
+  objects: [{objtype : String,
+             startPnt : {x : Number, y: Number},
+             endPnt : {x : Number, y: Number}}],
   commands: [String]
 });
 
