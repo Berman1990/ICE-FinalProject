@@ -20,6 +20,10 @@ router.get('/',  function(req, res, next) {
   });
 });
 
+router.post('/compile', function(req, res) {
+	var data = req.body;
+});
+
 
 /*
  * Return stage by Id

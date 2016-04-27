@@ -21,10 +21,12 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
     })
 })
 
-.controller('LevelController', function($http,$scope) {
+.controller('LevelController', function($scope, $http) {
     $scope.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
 
     $scope.model.selectedNodeData = null;
+
+    // $scope.model
 
     createjs.EventDispatcher.initialize($scope);
     $scope.stage = new createjs.Stage(document.getElementById("code-player"));
@@ -33,6 +35,14 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
 
     $scope.rotate = function() {
         $scope.controls.setCommandArray([3,1,1,1,1,1]);
+    }
+
+    $scope.compile = function() {
+        var jsonObject = JSON.parse($scope.model.getJson());
+
+        $http.post('api/stages/compile', jsonObject).success(function(data) {
+
+        });
     }
 
     $http.get('api/stages/4').success(function (data) {
