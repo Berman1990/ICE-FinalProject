@@ -21,7 +21,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
     })
 })
 
-.controller('LevelController', function($scope) {
+.controller('LevelController', function($scope, $http) {
     $scope.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
 
     $scope.model.selectedNodeData = null;
@@ -59,6 +59,14 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
 
         //$scope.controls.setCommandArray([2,1,2,1,2,1,2,1]);
         $scope.controls.setCommandArray([2,2,1,1,1,1,1,1,1,1,1]);
+    }
+
+    $scope.compile = function() {
+        var jsonObject = JSON.parse($scope.model.getJson());
+
+        $http.post('api/stages/compile', jsonObject).success(function(data) {
+
+        });
     }
 
     $http.get('api/stages/4').success(function (data) {
