@@ -31,7 +31,7 @@ router.post('/compile', function(req, res) {
 
     var currentNode = _.findWhere(graph.linkDataArray, {from: "S"});
 
-    while (currentNode.to === "E") {
+    while (currentNode.to !== "E") {
 
       if(currentNode[0] === "F") {
         commandsArray.push(1);
