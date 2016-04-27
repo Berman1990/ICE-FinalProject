@@ -54,8 +54,8 @@ angular.module('myApp.level.player', [])
                     player.regX = player.image.width / 2;
                     player.regY = player.image.height / 2;
 
-                    player.x = GetStartPoint.x;
-                    player.y = GetStartPoint.y;
+                    player.x = GetStartPoint.x + player.regX;
+                    player.y = GetStartPoint.y + player.regY;
                     player.rotateTo = GetStartPoint.direction + (360*2);
                     player.xTo = player.x;
                     player.yTo = player.y;
@@ -70,8 +70,8 @@ angular.module('myApp.level.player', [])
                     endPoint.regX = endPoint.image.width / 2;
                     endPoint.regY = endPoint.image.height / 2;
 
-                    endPoint.x = GetEndPoint.x;
-                    endPoint.y = GetEndPoint.y;
+                    endPoint.x = GetEndPoint.x + endPoint.regX;
+                    endPoint.y = GetEndPoint.y + endPoint.regY;
 
                     scope.stage.addChild(endPoint);
 
