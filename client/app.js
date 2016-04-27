@@ -16,6 +16,7 @@ angular.module('myApp', [
   'myApp.home',
   'myApp.level',
   'myApp.level.chart',
+  'myApp.level.player',
   'myApp.stages',
 ])
 
