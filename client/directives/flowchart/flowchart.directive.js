@@ -305,9 +305,9 @@ angular.module('myApp.level.chart', [])
                                 { category: "Empty", text: "" },
 
                                 { key:"F", text: "Step" },
-                                { Key:"K", category: "Loop", text: "Loop" },
-                                { Key:"R",category: "Turn",text: "Right" },
-                                { Key:"L",category: "Turn",text: "Left " },
+                                { key:"K", category: "Loop", text: "Loop" },
+                                { key:"R",category: "Turn",text: "Right" },
+                                { key:"L",category: "Turn",text: "Left " },
 
                                 { category: "Comment", text: "Comment" }
                             ])
