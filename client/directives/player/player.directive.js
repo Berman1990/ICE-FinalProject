@@ -54,12 +54,12 @@ angular.module('myApp.level.player', [])
                     player.regX = player.image.width / 2;
                     player.regY = player.image.height / 2;
 
-                    player.x = 50;
-                    player.y = 50;
-                    player.rotateTo = 720;
+                    player.x = GetStartPoint.x + player.regX;
+                    player.y = GetStartPoint.y + player.regY;
+                    player.rotateTo = GetStartPoint.direction + (360*2);
                     player.xTo = player.x;
                     player.yTo = player.y;
-                    player.rotation = 720;
+                    player.rotation = player.rotateTo;
                     player.stepSize = 30;
                     player.isReady = true;
 
@@ -70,25 +70,35 @@ angular.module('myApp.level.player', [])
                     endPoint.regX = endPoint.image.width / 2;
                     endPoint.regY = endPoint.image.height / 2;
 
-                    endPoint.x = 250;
-                    endPoint.y = 50;
+                    endPoint.x = GetEndPoint.x + endPoint.regX;
+                    endPoint.y = GetEndPoint.y + endPoint.regY;
 
                     scope.stage.addChild(endPoint);
+
+                    DrawWalls(GetWallsArray);
 
                     createjs.Ticker.timingMode = createjs.Ticker.RAF;
                     createjs.Ticker.addEventListener("tick", tick);
                 }
 
-                scope.playerControls.DrawWalls = function (WallsArray) {
+                var GetWallsArray;
+                var GetStartPoint;
+                var GetEndPoint;
+
+                scope.playerControls.ResetGame = function (data,WallsArray) {
+                    GetStartPoint = data.startPoint;
+                    GetEndPoint = data.endPoint;
+                    GetWallsArray = WallsArray;
+                }
+
+                function DrawWalls(WallsArray) {
                     var i;
-                    var Index=0;
+                    var Index = 0;
                     for (i = 0; i < WallsArray.length; i++) {
 
-                        if(WallsArray[i].startPnt.x != WallsArray[i].endPnt.x)
-                        {
+                        if (WallsArray[i].startPnt.x != WallsArray[i].endPnt.x) {
                             var x;
-                            for (x=WallsArray[i].startPnt.x; x< WallsArray[i].endPnt.x;x++)
-                            {
+                            for (x = WallsArray[i].startPnt.x; x < WallsArray[i].endPnt.x; x++) {
                                 wallsArray[Index] = new createjs.Bitmap(loader.getResult("wall"));
                                 wallsArray[Index].x = x;
                                 wallsArray[Index].y = WallsArray[i].startPnt.y;
@@ -96,11 +106,9 @@ angular.module('myApp.level.player', [])
                                 Index++;
                             }
                         }
-                        else
-                        {
+                        else {
                             var y;
-                            for (y=WallsArray[i].startPnt.y; y< WallsArray[i].endPnt.y;y++)
-                            {
+                            for (y = WallsArray[i].startPnt.y; y < WallsArray[i].endPnt.y; y++) {
                                 wallsArray[Index] = new createjs.Bitmap(loader.getResult("wall"));
                                 wallsArray[Index].x = WallsArray[i].startPnt.x;
                                 wallsArray[Index].y = y;
@@ -148,6 +156,8 @@ angular.module('myApp.level.player', [])
                     for(i=0;i<wallsArray.length;i++)
                     {
                         if (ndgmr.checkRectCollision(player, wallsArray[i])) {
+                            player.xTo=player.x;
+                            player.yTo=player.y;
                             console.log('boom!!');
                             clearTimeout(scope.timeout);
                         }

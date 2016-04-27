@@ -239,6 +239,12 @@ angular.module('myApp.level.chart', [])
                         // no ports, because no links are allowed to connect with a comment
                     ));
 
+                scope.model.getJson = function() {
+
+                    return myDiagram.model.toJson();
+
+                }
+
                 // replace the default Link template in the linkTemplateMap
                 myDiagram.linkTemplate =
                     $(go.Link, // the whole link panel
