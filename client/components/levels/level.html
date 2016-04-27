@@ -1,18 +1,18 @@
 <md-content flex layout="column" class="content-wrapper" layout-column>
     <div flex layout="row">
         <!-- <div flex="20" layout="column" layout-padding >
-	    Toolbar
-	      <div flex id="myPaletteDiv" class="boxWithHeight"></div>
-	  </div>
-	  <div flex layout="column" layout-padding >
-	    Work Area
-      		<div flex id="myDiagramDiv" class="boxWithHeight"></div>
-	  </div> -->
+        Toolbar
+          <div flex id="myPaletteDiv" class="boxWithHeight"></div>
+      </div>
+      <div flex layout="column" layout-padding >
+        Work Area
+            <div flex id="myDiagramDiv" class="boxWithHeight"></div>
+      </div> -->
         <go-diagram go-model="model"></go-diagram>
         <div flex layout="column" layout-padding>
             Player
             <section flex>
-                    <code-player controls='controls'> </code-player>
+                <code-player controls='controls'> </code-player>
                 <button ng-click="rotate()">rotate</button>
                 <button ng-click="compile()">compile</button>
                 <button ng-click="run()">run</button>
@@ -20,7 +20,24 @@
                 <input type="text" ng-model="model.selectedNodeData.text">
                 <br/> is Modified: {{model.isModified}}
                 <textarea id="mySavedModel" style="width:100%;height:300px" ng-hide="true">
-                    { "class": "go.GraphLinksModel", "linkFromPortIdProperty": "fromPort", "linkToPortIdProperty": "toPort", "nodeDataArray": [ {"category":"Start", "text":"Start", "key":-1, "loc":"-334.609375 -667"}, {"text":"loop 6 times", "key":-2, "loc":"-332.609375 -580"}, {"text":"turn\n", "key":-3, "loc":"-232.609375 -530"}, {"text":"Step", "key":-4, "loc":"-230.609375 -466"}, {"text":"Step", "key":-5, "loc":"-231.609375 -385"}, {"category":"End", "text":"End", "key":-6, "loc":"-336.609375 -279"} ], "linkDataArray": [ {"from":-1, "to":-2, "fromPort":"B", "toPort":"T", "points":[-334.609375,-642.2266599078512,-334.609375,-632.2266599078512,-334.609375,-619.3321921060252,-332.609375,-619.3321921060252,-332.609375,-606.4377243041993,-332.609375,-596.4377243041993]}, {"from":-3, "to":-4, "fromPort":"B", "toPort":"T", "points":[-232.609375,-505.6245513916016,-232.609375,-495.6245513916016,-232.609375,-494.03113784790037,-230.609375,-494.03113784790037,-230.609375,-492.4377243041992,-230.609375,-482.4377243041992]}, {"from":-4, "to":-5, "fromPort":"B", "toPort":"T", "points":[-230.609375,-449.5622756958008,-230.609375,-439.5622756958008,-230.609375,-425.5,-231.609375,-425.5,-231.609375,-411.4377243041992,-231.609375,-401.4377243041992]}, {"from":-2, "to":-3, "fromPort":"R", "toPort":"T", "points":[-281.3427276611328,-580,-271.3427276611328,-580,-232.609375,-580,-232.609375,-572.1877243041993,-232.609375,-564.3754486083984,-232.609375,-554.3754486083984]}, {"from":-2, "to":-6, "fromPort":"B", "toPort":"T", "points":[-332.609375,-563.5622756958008,-332.609375,-553.5622756958008,-332.609375,-431.592152378171,-336.609375,-431.592152378171,-336.609375,-309.6220290605412,-336.609375,-299.6220290605412]} ]}
+                   { "class": "go.GraphLinksModel",
+  "linkFromPortIdProperty": "fromPort",
+  "linkToPortIdProperty": "toPort",
+  "nodeDataArray": [ 
+{"category":"Start", "text":"Start", "key":-1, "loc":"-344.6093750000001 -478.0000000000002"},
+{"text":"loop 6 times", "key":-2, "loc":"-342.6093750000002 -377.99999999999966"},
+{"text":"turn\n", "key":-3, "loc":"-229.60937500000003 -404.00000000000057"},
+{"text":"Step", "key":-4, "loc":"-228.6093750000002 -337.00000000000034"},
+{"text":"Step", "key":-5, "loc":"-229.60937499999994 -272.9999999999998"},
+{"category":"End", "text":"End", "key":-6, "loc":"-336.609375 -279"}
+ ],
+  "linkDataArray": [ 
+{"from":-1, "to":-2, "fromPort":"B", "toPort":"T", "points":[-344.609375,-453.2266599078512,-344.609375,-443.2266599078512,-344.609375,-423.8321921060252,-342.609375,-423.8321921060252,-342.609375,-404.43772430419926,-342.609375,-394.43772430419926]},
+{"from":-3, "to":-4, "fromPort":"B", "toPort":"T", "points":[-229.609375,-379.6245513916015,-229.609375,-369.6245513916015,-229.609375,-366.53113784790037,-228.609375,-366.53113784790037,-228.609375,-363.4377243041992,-228.609375,-353.4377243041992]},
+{"from":-4, "to":-5, "fromPort":"B", "toPort":"T", "points":[-228.609375,-320.5622756958008,-228.609375,-310.5622756958008,-228.609375,-305,-229.609375,-305,-229.609375,-299.4377243041992,-229.609375,-289.4377243041992]},
+{"from":-2, "to":-3, "fromPort":"R", "toPort":"T", "points":[-291.3427276611328,-378.00000000000006,-281.3427276611328,-378.00000000000006,-270.85024642944336,-378.00000000000006,-270.85024642944336,-438.3754486083984,-229.609375,-438.3754486083984,-229.609375,-428.3754486083984]},
+{"from":-2, "to":-6, "fromPort":"B", "toPort":"T", "points":[-342.609375,-361.56227569580085,-342.609375,-351.56227569580085,-342.609375,-330.592152378171,-336.609375,-330.592152378171,-336.609375,-309.6220290605412,-336.609375,-299.6220290605412]}
+ ]}
                 </textarea>
             </section>
         </div>
