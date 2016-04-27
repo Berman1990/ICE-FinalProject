@@ -26,7 +26,7 @@ angular.module('myApp.level.player', [])
                     w = scope.stage.canvas.width;
                     h = scope.stage.canvas.height;
                     manifest = [
-                        {src: "ice_small.png", id: "player"},
+                        {src: "car.png", id: "player"},
                         {src: "ice_small.png", id: "end"},
                         {src: "wall.png", id: "wall"}
                     ];
@@ -84,6 +84,25 @@ angular.module('myApp.level.player', [])
                 var GetWallsArray;
                 var GetStartPoint;
                 var GetEndPoint;
+
+                // DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                if(true) {
+                    var data2 = new Object();
+                    var start = new Object();
+                    start.x = 50;
+                    start.y = 50;
+                    start.direction = 0;
+
+                    var start2 = new Object();
+                    start2.x = 250;
+                    start2.y = 250;
+                    data2.startPoint = start;
+                    data2.endPoint = start2;
+
+                    GetWallsArray={};
+                    GetStartPoint=start;
+                    GetEndPoint=start2;
+                }
 
                 scope.playerControls.ResetGame = function (data,WallsArray) {
                     GetStartPoint = data.startPoint;

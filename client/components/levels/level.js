@@ -41,7 +41,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
         var jsonObject = JSON.parse($scope.model.getJson());
 
         $http.post('api/stages/compile', jsonObject).success(function(data) {
-
+            $scope.controls.setCommandArray(data);
         });
     }
 
