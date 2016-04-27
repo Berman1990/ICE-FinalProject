@@ -18,6 +18,7 @@ angular.module('myApp', [
   'myApp.level.chart',
   'myApp.level.player',
   'myApp.stages',
+  'myApp.stage',
 ])
 
   .config(function($stateProvider, $mdThemingProvider, $urlRouterProvider, $authProvider) {
