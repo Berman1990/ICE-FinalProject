@@ -148,6 +148,8 @@ angular.module('myApp.level.player', [])
                     for(i=0;i<wallsArray.length;i++)
                     {
                         if (ndgmr.checkRectCollision(player, wallsArray[i])) {
+                            player.xTo=player.x;
+                            player.yTo=player.y;
                             console.log('boom!!');
                             clearTimeout(scope.timeout);
                         }

@@ -55,7 +55,8 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
         wall2.endPnt = endPnt2;
         $scope.controls.DrawWalls([wall,wall2]);
 
-        $scope.controls.setCommandArray([2,1,2,1,2,1,2,1]);
+        //$scope.controls.setCommandArray([2,1,2,1,2,1,2,1]);
+        $scope.controls.setCommandArray([2,2,1,1,1,1,1,1,1,1,1]);
     }
 
 
