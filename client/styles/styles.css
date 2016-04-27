@@ -15,6 +15,10 @@
     top: -70px!important;
 }
 
+#myDiagramDiv div {
+    top: -70px!important;
+}
+
 #myPaletteDiv {
     overflow: hidden!important;
 }
