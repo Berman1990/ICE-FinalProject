@@ -198,6 +198,7 @@ angular.module('myApp.level.chart', [])
                 myDiagram.nodeTemplateMap.add("Loop",
                     $(go.Node, "Spot", nodeStyle(),
                         $(go.Panel, "Auto",
+
                             $(go.Shape, "NorGate", { minSize: new go.Size(50, 60), fill: "#79C900", stroke: null }),
                             $(go.TextBlock, "Loop", { font: "bold 12pt Helvetica, Arial, sans-serif", stroke: lightText }
                                )
@@ -215,9 +216,6 @@ angular.module('myApp.level.chart', [])
                                 new go.Binding("text"))
                         ),
                         makePort("T", go.Spot.Top, false, true),
-                        makePort("R", go.Spot.Right, true, true),
-                        makePort("L", go.Spot.Left, true, true),
-
                         makePort("B", go.Spot.Bottom, true, true)
                     ));
 
