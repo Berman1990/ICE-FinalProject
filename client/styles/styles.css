@@ -29,12 +29,20 @@
     
 }
 
-md-content .login{
-    background-color: #1E88E5;
+#login_md{
+    background: transparent !important;
+}
+.login_bg{
+
+}
+#bottom{
+background: #F2F2F2 !important;
+    border-radius: 0 0 2em 2em !important;
 }
 
 md-toolbar {
     background-color: #44A69D;
+
 }
 
 .md-headline {

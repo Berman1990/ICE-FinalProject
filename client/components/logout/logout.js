@@ -8,7 +8,7 @@ angular.module('myApp.logout', [])
     })
   })
 
-  .controller('LogoutController', function($auth, $mdToast) {
+  .controller('LogoutController', function($auth, $mdToast, $location) {
     if (!$auth.isAuthenticated()) {
       return;
     }
@@ -19,6 +19,8 @@ angular.module('myApp.logout', [])
             .content('You have been logged out')
             .position('bottom right')
             .hideDelay(3000)
-        );
+        )
+          // change the path
+          $location.path('/');
       });
   });
