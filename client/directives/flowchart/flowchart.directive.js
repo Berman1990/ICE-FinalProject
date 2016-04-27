@@ -154,7 +154,7 @@ angular.module('myApp.level.chart', [])
                     $(go.Node, "Spot", nodeStyle(),
                         // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
                         $(go.Panel, "Auto",
-                            $(go.Shape, "Rectangle", { fill: "#00A9C9", stroke: null },
+                            $(go.Shape, "RoundedRectangle", { fill: "#00A9C9", stroke: null },
                                 new go.Binding("figure", "figure")),
                             $(go.TextBlock, {
                                     font: "bold 11pt Helvetica, Arial, sans-serif",
@@ -176,28 +176,52 @@ angular.module('myApp.level.chart', [])
                 myDiagram.nodeTemplateMap.add("Start",
                     $(go.Node, "Spot", nodeStyle(),
                         $(go.Panel, "Auto",
-                            $(go.Shape, "Circle", { minSize: new go.Size(40, 40), fill: "#79C900", stroke: null }),
-                            $(go.TextBlock, "Start", { font: "bold 11pt Helvetica, Arial, sans-serif", stroke: lightText },
+                            $(go.Shape, "TriangleDown", { minSize: new go.Size(50, 50), fill: "#79C900", stroke: null }),
+                            $(go.TextBlock, "Start", { font: "bold 12pt Helvetica, Arial, sans-serif", stroke: lightText },
                                 new go.Binding("text"))
                         ),
-                        // three named ports, one on each side except the top, all output only:
-                        makePort("L", go.Spot.Left, true, false),
-                        makePort("R", go.Spot.Right, true, false),
                         makePort("B", go.Spot.Bottom, true, false)
                     ));
 
                 myDiagram.nodeTemplateMap.add("End",
                     $(go.Node, "Spot", nodeStyle(),
                         $(go.Panel, "Auto",
-                            $(go.Shape, "Circle", { minSize: new go.Size(40, 40), fill: "#DC3C00", stroke: null }),
+                            $(go.Shape, "Spade", { minSize: new go.Size(50, 50), fill: "#DC3C00", stroke: null }),
                             $(go.TextBlock, "End", { font: "bold 11pt Helvetica, Arial, sans-serif", stroke: lightText },
                                 new go.Binding("text"))
                         ),
                         // three named ports, one on each side except the bottom, all input only:
-                        makePort("T", go.Spot.Top, false, true),
-                        makePort("L", go.Spot.Left, false, true),
-                        makePort("R", go.Spot.Right, false, true)
+                        makePort("T", go.Spot.Top, false, true)
+
                     ));
+
+                myDiagram.nodeTemplateMap.add("Loop",
+                    $(go.Node, "Spot", nodeStyle(),
+                        $(go.Panel, "Auto",
+                            $(go.Shape, "NorGate", { minSize: new go.Size(50, 60), fill: "#79C900", stroke: null }),
+                            $(go.TextBlock, "Loop", { font: "bold 12pt Helvetica, Arial, sans-serif", stroke: lightText }
+                               )
+                        ),
+                        makePort("T", go.Spot.Top, true, true),
+                        makePort("R", go.Spot.Right, true, true),
+                        makePort("B", go.Spot.Bottom, true, true)
+                    ));
+
+                myDiagram.nodeTemplateMap.add("Turn",
+                    $(go.Node, "Spot", nodeStyle(),
+                        $(go.Panel, "Auto",
+                            $(go.Shape, "RoundedRectangle", { minSize: new go.Size(60, 50), fill: "#00A9C9", stroke: null }),
+                            $(go.TextBlock, "Start", { font: "bold 12pt Helvetica, Arial, sans-serif", stroke: lightText },
+                                new go.Binding("text"))
+                        ),
+                        makePort("T", go.Spot.Top, false, true),
+                        makePort("R", go.Spot.Right, true, true),
+                        makePort("L", go.Spot.Left, true, true),
+
+                        makePort("B", go.Spot.Bottom, true, true)
+                    ));
+
+
 
                 myDiagram.nodeTemplateMap.add("Comment",
                     $(go.Node, "Auto", nodeStyle(),
@@ -273,11 +297,12 @@ angular.module('myApp.level.chart', [])
                             nodeTemplateMap: myDiagram.nodeTemplateMap, // share the templates used by myDiagram
                             model: new go.GraphLinksModel([ // specify the contents of the Palette
                                 { category: "Empty", text: "" },
-                                { category: "Start", text: "Start" },
-                                { text: "Step" },
-                                { text: "Loop" },
-                                { text: "Turn" },
-                                { category: "End", text: "End" },
+
+                                { key:"F", text: "Step" },
+                                { Key:"K", category: "Loop", text: "Loop" },
+                                { Key:"R",category: "Turn",text: "Right" },
+                                { Key:"L",category: "Turn",text: "Left " },
+
                                 { category: "Comment", text: "Comment" }
                             ])
                         });
