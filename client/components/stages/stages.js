@@ -27,4 +27,9 @@ angular.module('myApp.stages', [])
   	$http.get('api/stages/').success(function (data) {
   		$scope.stages = data;
   	});
+
+    $http.get('/api/users/me').success(function (data) {
+      $scope.user = data;
+    });
+
   });
