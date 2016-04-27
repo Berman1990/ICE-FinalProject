@@ -27,7 +27,8 @@ angular.module('myApp.level.player', [])
                     h = scope.stage.canvas.height;
                     manifest = [
                         {src: "ice_small.png", id: "player"},
-                        {src: "ice_small.png", id: "end"}
+                        {src: "ice_small.png", id: "end"},
+                        {src: "wall.png", id: "wall"}
                     ];
                     loader = new createjs.LoadQueue(false);
                     loader.addEventListener("complete", handleComplete);
@@ -55,10 +56,10 @@ angular.module('myApp.level.player', [])
 
                     player.x = 50;
                     player.y = 50;
-                    player.rotateTo = 0;
+                    player.rotateTo = 720;
                     player.xTo = player.x;
                     player.yTo = player.y;
-                    player.rotation = 0;
+                    player.rotation = 720;
                     player.stepSize = 30;
                     player.isReady = true;
 
@@ -74,9 +75,40 @@ angular.module('myApp.level.player', [])
 
                     scope.stage.addChild(endPoint);
 
-                    // scope.stage.addEventListener("gadi", rotatePalyer);
                     createjs.Ticker.timingMode = createjs.Ticker.RAF;
                     createjs.Ticker.addEventListener("tick", tick);
+                }
+
+                scope.playerControls.DrawWalls = function (WallsArray) {
+                    var i;
+                    var Index=0;
+                    for (i = 0; i < WallsArray.length; i++) {
+
+                        if(WallsArray[i].startPnt.x != WallsArray[i].endPnt.x)
+                        {
+                            var x;
+                            for (x=WallsArray[i].startPnt.x; x< WallsArray[i].endPnt.x;x++)
+                            {
+                                wallsArray[Index] = new createjs.Bitmap(loader.getResult("wall"));
+                                wallsArray[Index].x = x;
+                                wallsArray[Index].y = WallsArray[i].startPnt.y;
+                                scope.stage.addChild(wallsArray[Index]);
+                                Index++;
+                            }
+                        }
+                        else
+                        {
+                            var y;
+                            for (y=WallsArray[i].startPnt.y; y< WallsArray[i].endPnt.y;y++)
+                            {
+                                wallsArray[Index] = new createjs.Bitmap(loader.getResult("wall"));
+                                wallsArray[Index].x = WallsArray[i].startPnt.x;
+                                wallsArray[Index].y = y;
+                                scope.stage.addChild(wallsArray[Index]);
+                                Index++;
+                            }
+                        }
+                    }
                 }
 
                 scope.playerControls.update = function (command) {
@@ -101,22 +133,24 @@ angular.module('myApp.level.player', [])
                     else if (command == 3) {
                         player.rotateTo -= 90;
                     }
-
-
-
                 }
 
-                function tick(event) {
-                    //var deltaS = event.delta / 1000;
-                    //var position = player.x + 150 * deltaS;
-                    //var grantW = player.getBounds().width * player.scaleX;
-                    //player.x = (position >= w + grantW) ? -grantW : position;
+                var wallsArray = new Array;
 
+                function tick(event) {
                     // Are they touching?
-                    if (ndgmr.checkRectCollision(player,endPoint)) {
-                        //reset(canvas.width - playerImage.width, canvas.height - playerImage.height);
+                    if (ndgmr.checkRectCollision(player, endPoint)) {
                         console.log('done!');
                         clearTimeout(scope.timeout);
+                    }
+
+                    var i;
+                    for(i=0;i<wallsArray.length;i++)
+                    {
+                        if (ndgmr.checkRectCollision(player, wallsArray[i])) {
+                            console.log('boom!!');
+                            clearTimeout(scope.timeout);
+                        }
                     }
 
                     if (player.rotation < player.rotateTo) {
@@ -151,10 +185,6 @@ angular.module('myApp.level.player', [])
 
                     scope.stage.update(event);
                 }
-
-
             }
         }
-
-
     });
