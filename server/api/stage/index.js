@@ -52,7 +52,6 @@ router.post('/compile', function (req, res) {
         }
 
         if (currentNode.to !== stop) {
-
             readGraph(_.findWhere(graph.linkDataArray, {from: currentNode.to, fromPort: "B"}),stop);
         }
 
