@@ -4,6 +4,7 @@
 .boxWithHeight {
   box-sizing: border-box;
   border:solid 2px #C7C7C7;
+  display: block;
 }
 
 

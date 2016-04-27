@@ -21,8 +21,10 @@ angular.module('myApp.stages', [])
     })
   })
 
-  .controller('StagesController', function($http) {
-  	$http.get('api/stage/all').success(function (data) {
-  		console.log(data);
+  .controller('StagesController', function($http, $scope) {
+    $scope.stages = [];
+
+  	$http.get('api/stages/').success(function (data) {
+  		$scope.stages = data;
   	});
   });
