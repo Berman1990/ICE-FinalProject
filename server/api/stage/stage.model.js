@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var stageSchema = new mongoose.Schema({
-  id: { type: String, unique: true },
+  id: { type: Number, unique: true },
   name: String,
   difficulty: Number,
   description: String,
