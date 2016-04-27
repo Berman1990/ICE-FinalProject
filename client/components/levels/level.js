@@ -22,9 +22,12 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
 })
 
 .controller('LevelController', function($scope) {
+
     $scope.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
 
     $scope.model.selectedNodeData = null;
+
+    // $scope.model
 
     createjs.EventDispatcher.initialize($scope);
     $scope.stage = new createjs.Stage(document.getElementById("code-player"));
