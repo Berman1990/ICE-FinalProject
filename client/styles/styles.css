@@ -7,6 +7,21 @@
   display: block;
 }
 
+#myDiagramDiv {
+    overflow: hidden!important;
+}
+
+#myDiagramDiv canvas {
+    top: -70px!important;
+}
+
+#myPaletteDiv {
+    overflow: hidden!important;
+}
+
+#myPaletteDiv canvas {
+    top: -70px!important;
+}
 
 .hero {
     padding: 15px;

@@ -2,7 +2,7 @@ angular.module('myApp.level.chart', [])
     .directive('goDiagram', function() {
         return {
             restrict: 'E',
-            templateUrl: 'directives/flowchart/flowchart.directive.html', 
+            templateUrl: 'directives/flowchart/flowchart.directive.html',
             replace: true,
             scope: { model: '=goModel' },
             link: function(scope, element, attrs) {
@@ -131,6 +131,25 @@ angular.module('myApp.level.chart', [])
 
                 var lightText = 'whitesmoke';
 
+                myDiagram.nodeTemplateMap.add("Empty", // the default category
+                    $(go.Node, "Spot", nodeStyle(),
+                        // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
+                        $(go.Panel, "Auto",
+                            $(go.Shape, "Rectangle", { minSize: new go.Size(40, 60), fill: "#FFFFFF", stroke: null },
+                                new go.Binding("figure", "figure")),
+                            $(go.TextBlock, {
+                                    font: "bold 11pt Helvetica, Arial, sans-serif",
+                                    stroke: lightText,
+                                    margin: 8,
+                                    maxSize: new go.Size(160, NaN),
+                                    wrap: go.TextBlock.WrapFit,
+                                    editable: false
+                                },
+                                new go.Binding("text").makeTwoWay())
+                        )
+                        
+                    ));
+
                 myDiagram.nodeTemplateMap.add("", // the default category
                     $(go.Node, "Spot", nodeStyle(),
                         // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
@@ -253,6 +272,7 @@ angular.module('myApp.level.chart', [])
                             "animationManager.duration": 800, // slightly longer than default (600ms) animation
                             nodeTemplateMap: myDiagram.nodeTemplateMap, // share the templates used by myDiagram
                             model: new go.GraphLinksModel([ // specify the contents of the Palette
+                                { category: "Empty", text: "" },
                                 { category: "Start", text: "Start" },
                                 { text: "Step" },
                                 { text: "Loop" },
