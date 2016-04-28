@@ -229,7 +229,7 @@ angular.module('myApp.level.chart', [])
 
 
 
-                myDiagram.nodeTemplateMap.add("Comment",
+                    myDiagram.nodeTemplateMap.add("Comment",
                     $(go.Node, "Auto", nodeStyle(),
                         $(go.Shape, "File", { fill: "#EFFAB4", stroke: null }),
                         $(go.TextBlock, {
@@ -246,7 +246,6 @@ angular.module('myApp.level.chart', [])
                     ));
 
                 scope.model.getJson = function() {
-
                     return myDiagram.model.toJson();
 
                 }

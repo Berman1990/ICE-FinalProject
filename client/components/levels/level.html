@@ -13,11 +13,13 @@
             Player
             <section flex>
                 <code-player controls='controls'> </code-player>
-                <button ng-click="rotate()">rotate</button>
+                <!--<button ng-click="rotate()">rotate</button>-->
                 <button ng-click="compile()">compile</button>
                 <button ng-click="run()">run</button>
                 Selected node:
                 <input type="text" ng-model="model.selectedNodeData.text">
+                <br/>
+                Over Compile:<input type="text" ng-model="model.OverCompile">
                 <br/> is Modified: {{model.isModified}}
                 <textarea id="mySavedModel" style="width:100%;height:300px" ng-hide="true">
                    { "class": "go.GraphLinksModel",
