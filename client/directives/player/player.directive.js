@@ -56,7 +56,7 @@ angular.module('myApp.level.player', [])
 
                     player.x = GetStartPoint.x + player.regX;
                     player.y = GetStartPoint.y + player.regY;
-                    player.rotateTo = GetStartPoint.direction + (360*2);
+                    player.rotateTo = GetStartPoint.direction + (360 * 2);
                     player.xTo = player.x;
                     player.yTo = player.y;
                     player.rotation = player.rotateTo;
@@ -86,7 +86,7 @@ angular.module('myApp.level.player', [])
                 var GetEndPoint;
 
                 // DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                if(true) {
+                if (true) {
                     var data2 = new Object();
                     var start = new Object();
                     start.x = 50;
@@ -99,12 +99,12 @@ angular.module('myApp.level.player', [])
                     data2.startPoint = start;
                     data2.endPoint = start2;
 
-                    GetWallsArray={};
-                    GetStartPoint=start;
-                    GetEndPoint=start2;
+                    GetWallsArray = {};
+                    GetStartPoint = start;
+                    GetEndPoint = start2;
                 }
 
-                scope.playerControls.ResetGame = function (data,WallsArray) {
+                scope.playerControls.ResetGame = function (data, WallsArray) {
                     GetStartPoint = data.startPoint;
                     GetEndPoint = data.endPoint;
                     GetWallsArray = WallsArray;
@@ -172,12 +172,10 @@ angular.module('myApp.level.player', [])
                     }
 
                     var i;
-                    for(i=0;i<wallsArray.length;i++)
-                    {
+                    for (i = 0; i < wallsArray.length; i++) {
                         if (ndgmr.checkRectCollision(player, wallsArray[i])) {
-                            player.xTo=player.x;
-                            player.yTo=player.y;
-                            console.log('boom!!');
+                            player.xTo = player.x;
+                            player.yTo = player.y;
                             clearTimeout(scope.timeout);
                         }
                     }
