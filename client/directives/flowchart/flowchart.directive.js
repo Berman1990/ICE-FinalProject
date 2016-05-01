@@ -136,7 +136,13 @@ angular.module('myApp.level.chart', [])
                         // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
                         $(go.Panel, "Auto",
                             $(go.Shape, "Rectangle", { minSize: new go.Size(40, 60), fill: "#FFFFFF", stroke: null },
-                                new go.Binding("figure", "figure")),
+                                new go.Binding("figure", "figure"),
+                                new go.Binding("stroke", "isHighlighted", function(h) {
+                                    return h ? "red" : "black"; })
+                                .ofObject(),
+                                new go.Binding("strokeWidth", "isHighlighted", function(h) {
+                                    return h ? 3 : 1; })
+                                .ofObject()),
                             $(go.TextBlock, {
                                     font: "bold 11pt Helvetica, Arial, sans-serif",
                                     stroke: lightText,
@@ -147,7 +153,7 @@ angular.module('myApp.level.chart', [])
                                 },
                                 new go.Binding("text").makeTwoWay())
                         )
-                        
+
                     ));
 
                 myDiagram.nodeTemplateMap.add("", // the default category
@@ -155,7 +161,13 @@ angular.module('myApp.level.chart', [])
                         // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
                         $(go.Panel, "Auto",
                             $(go.Shape, "RoundedRectangle", { fill: "#00A9C9", stroke: null },
-                                new go.Binding("figure", "figure")),
+                                new go.Binding("figure", "figure"),
+                                new go.Binding("stroke", "isHighlighted", function(h) {
+                                    return h ? "red" : "black"; })
+                                .ofObject(),
+                                new go.Binding("strokeWidth", "isHighlighted", function(h) {
+                                    return h ? 3 : 1; })
+                                .ofObject()),
                             $(go.TextBlock, {
                                     font: "bold 11pt Helvetica, Arial, sans-serif",
                                     stroke: lightText,
@@ -176,7 +188,13 @@ angular.module('myApp.level.chart', [])
                 myDiagram.nodeTemplateMap.add("Start",
                     $(go.Node, "Spot", nodeStyle(),
                         $(go.Panel, "Auto",
-                            $(go.Shape, "TriangleDown", { minSize: new go.Size(50, 50), fill: "#79C900", stroke: null }),
+                            $(go.Shape, "TriangleDown", { minSize: new go.Size(50, 50), fill: "#79C900", stroke: null },
+                                new go.Binding("stroke", "isHighlighted", function(h) {
+                                    return h ? "red" : "black"; })
+                                .ofObject(),
+                                new go.Binding("strokeWidth", "isHighlighted", function(h) {
+                                    return h ? 3 : 1; })
+                                .ofObject()),
                             $(go.TextBlock, "Start", { font: "bold 12pt Helvetica, Arial, sans-serif", stroke: lightText },
                                 new go.Binding("text"))
                         ),
@@ -186,7 +204,13 @@ angular.module('myApp.level.chart', [])
                 myDiagram.nodeTemplateMap.add("End",
                     $(go.Node, "Spot", nodeStyle(),
                         $(go.Panel, "Auto",
-                            $(go.Shape, "Spade", { minSize: new go.Size(50, 50), fill: "#DC3C00", stroke: null }),
+                            $(go.Shape, "Spade", { minSize: new go.Size(50, 50), fill: "#DC3C00", stroke: null },
+                                new go.Binding("stroke", "isHighlighted", function(h) {
+                                    return h ? "red" : "black"; })
+                                .ofObject(),
+                                new go.Binding("strokeWidth", "isHighlighted", function(h) {
+                                    return h ? 3 : 1; })
+                                .ofObject()),
                             $(go.TextBlock, "End", { font: "bold 11pt Helvetica, Arial, sans-serif", stroke: lightText },
                                 new go.Binding("text"))
                         ),
@@ -199,7 +223,13 @@ angular.module('myApp.level.chart', [])
                     $(go.Node, "Spot", nodeStyle(),
                         $(go.Panel, "Auto",
 
-                            $(go.Shape, "NorGate", { minSize: new go.Size(50, 60), fill: "#79C900", stroke: null }),
+                            $(go.Shape, "NorGate", { minSize: new go.Size(50, 60), fill: "#79C900", stroke: null },
+                                new go.Binding("stroke", "isHighlighted", function(h) {
+                                    return h ? "red" : "black"; })
+                                .ofObject(),
+                                new go.Binding("strokeWidth", "isHighlighted", function(h) {
+                                    return h ? 3 : 1; })
+                                .ofObject()),
                             $(go.TextBlock, {
                                     margin: 5,
                                     maxSize: new go.Size(200, NaN),
@@ -219,7 +249,13 @@ angular.module('myApp.level.chart', [])
                 myDiagram.nodeTemplateMap.add("Turn",
                     $(go.Node, "Spot", nodeStyle(),
                         $(go.Panel, "Auto",
-                            $(go.Shape, "RoundedRectangle", { minSize: new go.Size(60, 50), fill: "#00A9C9", stroke: null }),
+                            $(go.Shape, "RoundedRectangle", { minSize: new go.Size(60, 50), fill: "#00A9C9", stroke: null },
+                                new go.Binding("stroke", "isHighlighted", function(h) {
+                                    return h ? "red" : "black"; })
+                                .ofObject(),
+                                new go.Binding("strokeWidth", "isHighlighted", function(h) {
+                                    return h ? 3 : 1; })
+                                .ofObject()),
                             $(go.TextBlock, "Start", { font: "bold 12pt Helvetica, Arial, sans-serif", stroke: lightText },
                                 new go.Binding("text"))
                         ),
@@ -229,7 +265,7 @@ angular.module('myApp.level.chart', [])
 
 
 
-                    myDiagram.nodeTemplateMap.add("Comment",
+                myDiagram.nodeTemplateMap.add("Comment",
                     $(go.Node, "Auto", nodeStyle(),
                         $(go.Shape, "File", { fill: "#EFFAB4", stroke: null }),
                         $(go.TextBlock, {
@@ -249,6 +285,24 @@ angular.module('myApp.level.chart', [])
                     return myDiagram.model.toJson();
 
                 }
+
+                scope.model.highlightNodeByKey = function(nodeKey) {
+                    var node = myDiagram.findNodeForKey(nodeKey);
+                    var diagram = node.diagram;
+                    diagram.startTransaction("highlight");
+
+                    diagram.clearHighlighteds();
+
+                    node.isHighlighted = true;
+
+                    diagram.commitTransaction("highlight");
+                }
+
+                myDiagram.click = function(e) {
+                    myDiagram.startTransaction("no highlighteds");
+                    myDiagram.clearHighlighteds();
+                    myDiagram.commitTransaction("no highlighteds");
+                };
 
                 // replace the default Link template in the linkTemplateMap
                 myDiagram.linkTemplate =
@@ -309,10 +363,10 @@ angular.module('myApp.level.chart', [])
                             model: new go.GraphLinksModel([ // specify the contents of the Palette
                                 { category: "Empty", text: "" },
 
-                                { key:"F", text: "Step" },
-                                { key:"K", category: "Loop", times:"3", text: "Loop" },
-                                { key:"R",category: "Turn",text: "Right" },
-                                { key:"L",category: "Turn",text: "Left " },
+                                { key: "F", text: "Step" },
+                                { key: "K", category: "Loop", times: "3", text: "Loop" },
+                                { key: "R", category: "Turn", text: "Right" },
+                                { key: "L", category: "Turn", text: "Left " },
 
                                 { category: "Comment", text: "Comment" }
                             ])

@@ -35,9 +35,9 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
 
         $scope.controls = {};
 
-        // $scope.rotate = function() {
-        //     $scope.controls.setCommandArray([3,1,1,1,1,1]);
-        // }
+        $scope.rotate = function() {
+            $scope.model.highlightNodeByKey("S");
+        }
 
         $scope.run = function () {
             var jsonObject = JSON.parse($scope.model.getJson());
@@ -70,6 +70,8 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
             var OverCompile = true;
             $scope.model.OverCompile = "Do Compile";
 
+            // var error
+
             for (var j = 0; j < jsonObject.nodeDataArray.length; j++) {
 
                 var NodeKey = jsonObject.nodeDataArray[j].key;
@@ -77,25 +79,29 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
 
                 if (NodeKey === "S") {
                     if (NumberOfLink.from !== 1) {
-                        alert(NodeKey + " error from");
+                        // alert(NodeKey + " error from");
+                        $scope.model.highlightNodeByKey(NodeKey);
                         OverCompile = false;
                     }
                 }
                 else if (NodeKey === "E") {
                     if (NumberOfLink.to !== 1) {
-                        alert(NodeKey + " error to");
+                        // alert(NodeKey + " error to");
+                        $scope.model.highlightNodeByKey(NodeKey);
                         OverCompile = false;
                     }
                 }
                 else if (NodeKey === "K") {
                     if (NumberOfLink.to !== 0 || NumberOfLink.from !== 0) {
                         if (NumberOfLink.to !== 2) {
-                            alert(NodeKey + " Error to");
+                            // alert(NodeKey + " Error to");
+                            $scope.model.highlightNodeByKey(NodeKey);
                             OverCompile = false;
                         }
 
                         if (NumberOfLink.from !== 2) {
-                            alert(NodeKey + " Error from");
+                            // alert(NodeKey + " Error from");
+                            $scope.model.highlightNodeByKey(NodeKey);
                             OverCompile = false;
                         }
                     }
@@ -103,12 +109,14 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
                 else {
                     if (NumberOfLink.to !== 0 || NumberOfLink.from !== 0) {
                         if (NumberOfLink.to !== 1) {
-                            alert(NodeKey + " Error to");
+                            // alert(NodeKey + " Error to");
+                            $scope.model.highlightNodeByKey(NodeKey);
                             OverCompile = false;
                         }
 
                         if (NumberOfLink.from !== 1) {
-                            alert(NodeKey + " Error from");
+                            // alert(NodeKey + " Error from");
+                            $scope.model.highlightNodeByKey(NodeKey);
                             OverCompile = false;
                         }
                     }
