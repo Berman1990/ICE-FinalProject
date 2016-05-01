@@ -35,7 +35,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
 
         $scope.controls = {};
 
-        $scope.rotate = function() {
+        $scope.rotate = function () {
             $scope.model.highlightNodeByKey("S");
         }
 
@@ -67,10 +67,10 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
         }
 
         function doCompile(jsonObject) {
-            var OverCompile = true;
-            $scope.model.OverCompile = "Do Compile";
 
-            // var error
+            var OverCompile = true;
+
+            var errorArray = [];
 
             for (var j = 0; j < jsonObject.nodeDataArray.length; j++) {
 
@@ -79,51 +79,164 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
 
                 if (NodeKey === "S") {
                     if (NumberOfLink.from !== 1) {
-                        // alert(NodeKey + " error from");
-                        $scope.model.highlightNodeByKey(NodeKey);
+                        $scope.model.highlightNodeByKey(NodeKey, false);
                         OverCompile = false;
+
+                        var errorObject = new Object();
+                        errorObject.id = NodeKey;
+
+                        if (NumberOfLink.from > 1) {
+                            errorObject.name = "Error: More Then One Output from the start";
+                        }
+                        else {
+                            errorObject.name = "Error: Less Then One Output from the start";
+                        }
+
+                        errorArray.push(errorObject);
                     }
                 }
                 else if (NodeKey === "E") {
                     if (NumberOfLink.to !== 1) {
-                        // alert(NodeKey + " error to");
-                        $scope.model.highlightNodeByKey(NodeKey);
+                        $scope.model.highlightNodeByKey(NodeKey, false);
                         OverCompile = false;
+
+                        var errorObject = new Object();
+                        errorObject.id = NodeKey;
+
+                        if (NumberOfLink.to > 1) {
+                            errorObject.name = "Error: More Then One Input to the end";
+                        }
+                        else {
+                            errorObject.name = "Error: Less Then One Input to the end";
+                        }
+
+                        errorArray.push(errorObject);
                     }
                 }
                 else if (NodeKey === "K") {
                     if (NumberOfLink.to !== 0 || NumberOfLink.from !== 0) {
                         if (NumberOfLink.to !== 2) {
-                            // alert(NodeKey + " Error to");
-                            $scope.model.highlightNodeByKey(NodeKey);
+                            $scope.model.highlightNodeByKey(NodeKey, false);
                             OverCompile = false;
+
+                            var errorObject = new Object();
+                            errorObject.id = NodeKey;
+
+                            if (NumberOfLink.to > 2) {
+                                errorObject.name = "Error: More Then Two Input to the loop";
+                            }
+                            else {
+                                errorObject.name = "Error: Less Then Two Input to the loop";
+                            }
+
+                            errorArray.push(errorObject);
                         }
 
                         if (NumberOfLink.from !== 2) {
-                            // alert(NodeKey + " Error from");
-                            $scope.model.highlightNodeByKey(NodeKey);
+                            $scope.model.highlightNodeByKey(NodeKey, false);
                             OverCompile = false;
+
+                            var errorObject = new Object();
+                            errorObject.id = NodeKey;
+
+                            if (NumberOfLink.from > 2) {
+                                errorObject.name = "Error: More Then Two Output from the loop";
+                            }
+                            else {
+                                errorObject.name = "Error: Less Then Two Output from the loop";
+                            }
+
+                            errorArray.push(errorObject);
                         }
                     }
                 }
                 else {
                     if (NumberOfLink.to !== 0 || NumberOfLink.from !== 0) {
+
+                        var keyName;
+                        if (NodeKey === "F") {
+                            keyName = "Step";
+                        }
+                        else if (NodeKey === "R") {
+                            keyName = "Right";
+                        }
+                        else if (NodeKey === "L") {
+                            keyName = "Left";
+                        }
+
                         if (NumberOfLink.to !== 1) {
-                            // alert(NodeKey + " Error to");
-                            $scope.model.highlightNodeByKey(NodeKey);
+                            $scope.model.highlightNodeByKey(NodeKey, false);
                             OverCompile = false;
+
+                            var errorObject = new Object();
+                            errorObject.id = NodeKey;
+
+                            if (NumberOfLink.to > 1) {
+                                errorObject.name = "Error: More Then One Input to the " + keyName;
+                            }
+                            else {
+                                errorObject.name = "Error: Less Then One Input to the " + keyName;
+                            }
+
+                            errorArray.push(errorObject);
                         }
 
                         if (NumberOfLink.from !== 1) {
-                            // alert(NodeKey + " Error from");
-                            $scope.model.highlightNodeByKey(NodeKey);
+                            $scope.model.highlightNodeByKey(NodeKey, false);
                             OverCompile = false;
+
+                            var errorObject = new Object();
+                            errorObject.id = NodeKey;
+
+                            if (NumberOfLink.from > 1) {
+                                errorObject.name = "Error: More Then One Output from the " + keyName;
+                            }
+                            else {
+                                errorObject.name = "Error: Less Then One Output from the " + keyName;
+                            }
+
+                            errorArray.push(errorObject);
                         }
                     }
                 }
             }
 
-            $scope.model.OverCompile = OverCompile;
+            $scope.$watch('data.repeatSelect', function (repeatSelect) {
+                if (repeatSelect !== undefined && repeatSelect !== null) {
+                    for (var i = 0; i < repeatSelect.length; i++) {
+                        if (i === 0) {
+                            $scope.model.highlightNodeByKey(repeatSelect[i], true);
+                        }
+                        else {
+                            $scope.model.highlightNodeByKey(repeatSelect[i], false);
+                        }
+                    }
+                }
+            });
+
+            if (OverCompile) {
+                var errorObject = new Object();
+                errorObject.id = NodeKey;
+                errorObject.name = "No Error :)";
+
+                errorArray.push(errorObject);
+
+                $scope.selectStyle = {
+                    "color": "green"
+                }
+            }
+            else {
+                $scope.selectStyle = {
+                    "color": "red"
+                }
+            }
+
+
+            $scope.data = {
+                repeatSelect: null,
+                availableOptions: errorArray,
+            };
+
             return OverCompile;
         }
 
@@ -136,6 +249,4 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
             $scope.level = data;
             $scope.controls.ResetGame(data[0], data[0].objects);
         });
-
-
     });

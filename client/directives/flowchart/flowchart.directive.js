@@ -286,16 +286,18 @@ angular.module('myApp.level.chart', [])
 
                 }
 
-                scope.model.highlightNodeByKey = function(nodeKey) {
+                scope.model.highlightNodeByKey = function(nodeKey, DoClear) {
                     var node = myDiagram.findNodeForKey(nodeKey);
                     var diagram = node.diagram;
                     diagram.startTransaction("highlight");
 
-                    diagram.clearHighlighteds();
+                    if(DoClear) {
+                        diagram.clearHighlighteds();
+                    }
 
                     node.isHighlighted = true;
 
-                    diagram.commitTransaction("highlight");
+                    //diagram.commitTransaction("highlight");
                 }
 
                 myDiagram.click = function(e) {

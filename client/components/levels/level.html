@@ -17,10 +17,14 @@
                 <button ng-click="compile()">compile</button>
                 <button ng-click="run()">run</button>
                 Selected node:
-                <input type="text" ng-model="model.selectedNodeData.text">
-                <br/>
-                Over Compile:<input type="text" ng-model="model.OverCompile">
-                <br/> is Modified: {{model.isModified}}
+                <input type="text" ng-model="model.selectedNodeData.text"> is Modified: {{model.isModified}}
+                <br/><br/>
+
+                <select style="width: 100%;"  ng-style="selectStyle" size="7" name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect" multiple>
+                    <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+                </select>
+
+
                 <textarea id="mySavedModel" style="width:100%;height:300px" ng-hide="true">
                    { "class": "go.GraphLinksModel",
   "linkFromPortIdProperty": "fromPort",
