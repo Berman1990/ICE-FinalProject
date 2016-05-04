@@ -1,30 +1,46 @@
-
-
 /* Important to set height for column layout */
 .boxWithHeight {
-  box-sizing: border-box;
-  border:solid 2px #C7C7C7;
-  display: block;
+    box-sizing: border-box;
+    border: solid 2px #f2f2f2;
+    display: block;
+    background-color:#f2f2f2;
+}
+
+.Title {
+    background-color: #0d474f;
+    text-align: center;
+    color: white;
+}
+
+.btnDesign {
+    background-color: #bfbfbf;
+    border: none;
+    color: #0d474f;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
 }
 
 #myDiagramDiv {
-    overflow: hidden!important;
+    overflow: hidden !important;
 }
 
 #myDiagramDiv canvas {
-    top: -70px!important;
+    top: -70px !important;
 }
 
 #myDiagramDiv div {
-    top: -70px!important;
+    top: -70px !important;
 }
 
 #myPaletteDiv {
-    overflow: hidden!important;
+    overflow: hidden !important;
 }
 
 #myPaletteDiv canvas {
-    top: -70px!important;
+    top: -70px !important;
 }
 
 .hero {
@@ -35,6 +51,7 @@
     background-image: url('../images/ice-02.jpg');
     background-size: cover;
 }
+
 .hero-logo {
     width: 100%;
     border-radius: 2em;
@@ -44,17 +61,17 @@
 
 .title-logo {
     width: 100px;
-/*    padding-top: 50px;
-    position: absolute;*/
-    
+    /*    padding-top: 50px;
+        position: absolute;*/
+
 }
 
-md-content .login{
+md-content .login {
     background-color: #1E88E5;
 }
 
 md-toolbar {
-    background-color: #44A69D;
+    background-color: #0d474f;
 }
 
 .md-headline {
@@ -64,6 +81,7 @@ md-toolbar {
 .hero-buttons {
     margin-bottom: 60px;
 }
+
 .hero-buttons .md-button {
     padding: 0 14px;
 }
@@ -75,11 +93,11 @@ md-toolbar {
 .center-form {
     max-width: 768px;
     margin: 38px auto;
-    box-shadow: 0px 2px 21px 1px rgba(0,0,0,0.7);
+    box-shadow: 0px 2px 21px 1px rgba(0, 0, 0, 0.7);
 }
 
 .whiteframe {
-    margin: 0!important;
+    margin: 0 !important;
 }
 
 .mute-toolbar {
@@ -100,7 +118,6 @@ md-toolbar {
     height: 100px;
     display: block;
 }
-
 
 /*********************
 * Social Buttons

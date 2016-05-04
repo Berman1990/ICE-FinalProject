@@ -9,18 +9,26 @@
             <div flex id="myDiagramDiv" class="boxWithHeight"></div>
       </div> -->
         <go-diagram go-model="model"></go-diagram>
-        <div flex layout="column" layout-padding>
-            Player
+        <div layout="column" layout-padding>
             <section flex>
-                <code-player controls='controls'> </code-player>
+                <div class="Title">
+                    Player
+                </div>
+                <code-player controls='controls'></code-player>
                 <!-- <button ng-click="rotate()">rotate</button> -->
-                <button ng-click="compile()">compile</button>
-                <button ng-click="run()">run</button>
-                Selected node:
-                <input type="text" ng-model="model.selectedNodeData.text"> is Modified: {{model.isModified}}
+                <!--<img src="../images/btnReset.png"/>-->
+                <button class="btnDesign" ng-click="reset()">Reset</button>
+                <button class="btnDesign" ng-click="compile()">Compile</button>
+                <button class="btnDesign" ng-click="run()">Run</button>
+                <!--Selected node:-->
+                <!--<input type="text" ng-model="model.selectedNodeData.text"> is Modified: {{model.isModified}}-->
                 <br/><br/>
 
-                <select style="width: 100%;"  ng-style="selectStyle" size="7" name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect" multiple>
+                <div class="Title">
+                    Log
+                </div>
+                <select style="width: 100%; overflow: auto;" class="boxWithHeight" ng-style="selectStyle" size="5"
+                        name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect" multiple>
                     <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
                 </select>
 
