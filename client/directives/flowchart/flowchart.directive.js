@@ -364,7 +364,7 @@ angular.module('myApp.level.chart', [])
                             nodeTemplateMap: myDiagram.nodeTemplateMap, // share the templates used by myDiagram
                             model: new go.GraphLinksModel([ // specify the contents of the Palette
                                 { category: "Empty", text: "" },
-
+                                { category: "Empty", text: "" },
                                 { key: "F", text: "Step" },
                                 { key: "K", category: "Loop", times: "3", text: "Loop" },
                                 { key: "R", category: "Turn", text: "Right" },

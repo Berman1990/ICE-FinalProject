@@ -45,7 +45,8 @@ router.post('/compile', function (req, res) {
 
             var loopNode = _.findWhere(graph.linkDataArray, {from: currentNode.to, fromPort: "R"});
             var i;
-            for (i = 0; i < 2; i++) {
+            var loopTimes = parseInt(_.findWhere(graph.nodeDataArray, {key: loopNode.from}).times);
+            for (i = 0; i < loopTimes; i++) {
                 readGraph(loopNode, currentNode.to);
             }
 
