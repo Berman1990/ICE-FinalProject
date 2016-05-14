@@ -245,7 +245,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
             doCompile(jsonObject);
         }
 
-        $http.get('api/stages/4').success(function (data) {
+        $http.get('api/stages/3').success(function (data) {
             $scope.level = data;
             $scope.controls.ResetGame(data[0], data[0].objects);
         });
