@@ -14,7 +14,8 @@
     "underscore": "^1.8.3"
   },
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "postinstall": "bower install"
   },
   "main": "server/server.js"
 }
