@@ -17,6 +17,13 @@ router.get('/me', auth.ensureAuthenticated, function(req, res) {
   });
 });
 
+router.post('/stageComplete', auth.ensureAuthenticated, function(req, res) {
+  User.findById(req.user, function(err, user) {
+    user.finishedStages.push(parseInt(req.body.stageId));
+    user.save();
+  });
+});
+
 /*
 * Change profile fields (including password)
 * */

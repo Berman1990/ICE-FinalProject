@@ -152,3 +152,28 @@ md-toolbar {
     color: #fff;
     background-color: #294786;
 }
+
+.stages {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.stage {
+    width:18%;
+}
+.actionButtons {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    left:20%;
+
+}
+
+.actionButton {
+margin-right: 0 !important;
+margin-left: 0 !important;
+}

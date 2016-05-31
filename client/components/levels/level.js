@@ -21,12 +21,14 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
         })
     })
 
-    .controller('LevelController', function ($scope, $http) {
+    .controller('LevelController', function ($scope, $http, $stateParams) {
         $scope.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
 
         $scope.model.selectedNodeData = null;
 
         $scope.model.OverCompile = null;
+
+        var stageId = $stateParams.levelNum;
 
         // $scope.model
 
