@@ -26,8 +26,8 @@ angular.module('myApp.level.player', [])
                     w = scope.stage.canvas.width;
                     h = scope.stage.canvas.height;
                     manifest = [
-                        {src: "car.png", id: "player"},
-                        {src: "ice_small.png", id: "end"},
+                        {src: "Eskimo.png", id: "player"},
+                        {src: "Igloo.png", id: "end"},
                         {src: "wall.png", id: "wall"}
                     ];
                     loader = new createjs.LoadQueue(false);
