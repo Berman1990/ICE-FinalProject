@@ -2,7 +2,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
 
     .config(function ($stateProvider) {
         $stateProvider.state('level', {
-            url: '/level',
+            url: '/level/:levelNum',
             templateUrl: 'components/levels/level.html',
             controller: 'LevelController',
             resolve: {
@@ -28,7 +28,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
 
         $scope.model.OverCompile = null;
 
-        var stageId = $stateParams.levelNum;
+        var stageId = $stateParams.levelNum || 0;
 
         // $scope.model
 
@@ -251,7 +251,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
             doCompile(jsonObject);
         }
 
-        $http.get('api/stages/3').success(function (data) {
+        $http.get('api/stages/' + stageId).success(function (data) {
             $scope.level = data;
             $scope.controls.InitGame(data[0], data[0].objects);
         });
