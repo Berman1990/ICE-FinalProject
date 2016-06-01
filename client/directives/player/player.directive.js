@@ -86,6 +86,7 @@ angular.module('myApp.level.player', [])
                 var GetEndPoint;
 
                 // DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                /*
                 if (true) {
                     var data2 = new Object();
                     var start = new Object();
@@ -103,11 +104,19 @@ angular.module('myApp.level.player', [])
                     GetStartPoint = start;
                     GetEndPoint = start2;
                 }
+*/
 
-                scope.playerControls.ResetGame = function (data, WallsArray) {
+                scope.playerControls.InitGame = function (data, WallsArray) {
                     GetStartPoint = data.startPoint;
                     GetEndPoint = data.endPoint;
                     GetWallsArray = WallsArray;
+                }
+
+                scope.playerControls.ResetGame = function () {
+                    player.x = GetStartPoint.x;
+                    player.x = GetStartPoint.y;
+                    player.xTo = GetStartPoint.x;
+                    player.xTo = GetStartPoint.y;
                 }
 
                 function DrawWalls(WallsArray) {
