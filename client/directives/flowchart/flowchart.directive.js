@@ -222,14 +222,17 @@ angular.module('myApp.level.chart', [])
                 myDiagram.nodeTemplateMap.add("Loop",
                     $(go.Node, "Spot", nodeStyle(),
                         $(go.Panel, "Auto",
-
-                            $(go.Shape, "NorGate", { minSize: new go.Size(50, 60), fill: "#79C900", stroke: null },
+                            $(go.Picture, { source: "images/loop.png",
+                                width: 70, height: 70 }),
+                        //    $(go.Picture,{ "images\\loop.png", column: 3,
+                          //                   width: 50, height: 32.5, margin: 2 )},
+                            /*$(go.Shape, "NorGate", { minSize: new go.Size(50, 60), fill: "#79C900", stroke: null },
                                 new go.Binding("stroke", "isHighlighted", function(h) {
                                     return h ? "red" : "black"; })
                                 .ofObject(),
                                 new go.Binding("strokeWidth", "isHighlighted", function(h) {
                                     return h ? 3 : 1; })
-                                .ofObject()),
+                                .ofObject()),*/
                             $(go.TextBlock, {
                                     margin: 5,
                                     maxSize: new go.Size(200, NaN),
@@ -270,7 +273,7 @@ angular.module('myApp.level.chart', [])
                         $(go.Shape, "File", { fill: "#EFFAB4", stroke: null }),
                         $(go.TextBlock, {
                                 margin: 5,
-                                maxSize: new go.Size(200, NaN),
+                                maxSize: new go.Size(100, NaN),
                                 wrap: go.TextBlock.WrapFit,
                                 textAlign: "center",
                                 editable: true,
@@ -363,12 +366,13 @@ angular.module('myApp.level.chart', [])
                             "animationManager.duration": 800, // slightly longer than default (600ms) animation
                             nodeTemplateMap: myDiagram.nodeTemplateMap, // share the templates used by myDiagram
                             model: new go.GraphLinksModel([ // specify the contents of the Palette
+
                                 { category: "Empty", text: "" },
-                                { category: "Empty", text: "" },
-                                { key: "F", text: "Step" },
+                                
                                 { key: "K", category: "Loop", times: "3", text: "Loop" },
                                 { key: "R", category: "Turn", text: "Right" },
                                 { key: "L", category: "Turn", text: "Left " },
+                                { key: "F", category: "Turn", text: "Step" },
 
                                 { category: "Comment", text: "Comment" }
                             ])
