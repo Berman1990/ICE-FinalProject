@@ -50,6 +50,7 @@ angular.module('myApp.level.player', [])
                 };
 
                 function handleComplete() {
+                    DrawGrid();
                     player = new createjs.Bitmap(loader.getResult("player"));
                     player.regX = player.image.width / 2;
                     player.regY = player.image.height / 2;
@@ -60,7 +61,7 @@ angular.module('myApp.level.player', [])
                     player.xTo = player.x;
                     player.yTo = player.y;
                     player.rotation = player.rotateTo;
-                    player.stepSize = 30;
+                    player.stepSize = 50;
                     player.isReady = true;
 
                     scope.stage.addChild(player);
@@ -77,6 +78,7 @@ angular.module('myApp.level.player', [])
 
                     DrawWalls(GetWallsArray);
 
+
                     createjs.Ticker.timingMode = createjs.Ticker.RAF;
                     createjs.Ticker.addEventListener("tick", tick);
                 }
@@ -85,27 +87,6 @@ angular.module('myApp.level.player', [])
                 var GetStartPoint;
                 var GetEndPoint;
 
-                // DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                /*
-                if (true) {
-                    var data2 = new Object();
-                    var start = new Object();
-                    start.x = 50;
-                    start.y = 50;
-                    start.direction = 0;
-
-                    var start2 = new Object();
-                    start2.x = 250;
-                    start2.y = 250;
-                    data2.startPoint = start;
-                    data2.endPoint = start2;
-
-                    GetWallsArray = {};
-                    GetStartPoint = start;
-                    GetEndPoint = start2;
-                }
-*/
-
                 scope.playerControls.InitGame = function (data, WallsArray) {
                     GetStartPoint = data.startPoint;
                     GetEndPoint = data.endPoint;
@@ -113,10 +94,30 @@ angular.module('myApp.level.player', [])
                 }
 
                 scope.playerControls.ResetGame = function () {
-                    player.x = GetStartPoint.x;
-                    player.x = GetStartPoint.y;
-                    player.xTo = GetStartPoint.x;
-                    player.xTo = GetStartPoint.y;
+                    player.x = GetStartPoint.x + player.regX;
+                    player.y = GetStartPoint.y + player.regY;
+                    player.rotateTo = GetStartPoint.direction + (360 * 2);
+                    player.xTo = player.x;
+                    player.yTo = player.y;
+                    player.rotation = player.rotateTo;
+                    player.isReady = true;
+                }
+
+                function DrawGrid()
+                {
+                    var square;
+                    for (var x = 0; x < 10; x++)
+                    {
+                        for (var y = 0; y < 10; y++)
+                        {
+                            square = new createjs.Shape();
+                            square.graphics.beginStroke("#d8d8d8")
+                            square.graphics.drawRect(0, 0, 50, 50);
+                            square.x = x * 50;
+                            square.y = y * 50;
+                            scope.stage.addChild(square);
+                        }
+                    }
                 }
 
                 function DrawWalls(WallsArray) {
@@ -178,7 +179,7 @@ angular.module('myApp.level.player', [])
                     if (ndgmr.checkRectCollision(player, endPoint)) {
                         console.log('done!');
                         clearTimeout(scope.timeout);
-                    }
+                    }   
 
                     var i;
                     for (i = 0; i < wallsArray.length; i++) {
