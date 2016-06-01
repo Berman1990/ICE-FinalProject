@@ -179,7 +179,7 @@ angular.module('myApp.level.player', [])
                     if (ndgmr.checkRectCollision(player, endPoint)) {
                         console.log('done!');
                         clearTimeout(scope.timeout);
-                    }
+                    }   
 
                     var i;
                     for (i = 0; i < wallsArray.length; i++) {
