@@ -50,6 +50,10 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
             }
         }
 
+        $scope.reset = function () {
+            $scope.controls.ResetGame();
+            }
+
         function SumNumberOfLink(jsonObject, NoedKey) {
             var res = new Object();
 
@@ -249,6 +253,6 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
 
         $http.get('api/stages/' + stageId).success(function (data) {
             $scope.level = data;
-            $scope.controls.ResetGame(data[0], data[0].objects);
+            $scope.controls.InitGame(data[0], data[0].objects);
         });
     });
