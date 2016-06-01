@@ -28,6 +28,17 @@ angular.module('myApp', [
 
     $urlRouterProvider.otherwise('/home');
 
+      //$stateProvider
+      //    .state('level', {
+      //        url: 'level/:levelNum',
+      //        params: {
+      //            levelNum: {
+      //                value: '0'
+      //            }
+      //        }
+      //    });
+
+
     $authProvider.facebook({
       clientId: '1446453645668626'
     });
