@@ -156,6 +156,38 @@ angular.module('myApp.level.chart', [])
 
                     ));
 
+                var customEditor = document.createElement("textarea");
+                // var loc = customEditor.textEditingTool.textBlock.getDocumentPoint(go.Spot.TopLeft);
+                // var pos = myDiagram.transformDocToView(loc);
+                 customEditor.onActivate = function() {
+                    customEditor.value = customEditor.textEditingTool.textBlock.text;
+
+                    // Do a few different things when a user presses a key
+                    customEditor.addEventListener("keydown", function(e) {
+                      var keynum = e.which;
+                      var tool = customEditor.textEditingTool;
+                      if (tool === null) return;
+                      if (keynum == 13) { // Accept on Enter
+                        tool.acceptText(go.TextEditingTool.Enter);
+                        return;
+                      } else if (keynum == 9) { // Accept on Tab
+                        tool.acceptText(go.TextEditingTool.Tab);
+                        e.preventDefault();
+                        return false;
+                      } else if (keynum === 27) { // Cancel on Esc
+                        tool.doCancel();
+                        if (tool.diagram) tool.diagram.focus();
+                      }
+                    }, false);
+
+                    var loc = customEditor.textEditingTool.textBlock.getDocumentPoint(go.Spot.TopLeft);
+                    var pos = myDiagram.transformDocToView(loc);
+                    customEditor.style.left = pos.x + "px";
+                    customEditor.style.top  = (pos.y -70 )+ "px";
+                    customEditor.style.width = "20px";
+                    customEditor.style.height = "20px";
+                  }
+
                 myDiagram.nodeTemplateMap.add("", // the default category
                     $(go.Node, "Spot", nodeStyle(),
                         // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
@@ -175,6 +207,7 @@ angular.module('myApp.level.chart', [])
                                     maxSize: new go.Size(160, NaN),
                                     wrap: go.TextBlock.WrapFit,
                                     editable: true
+                                    
                                 },
                                 new go.Binding("text").makeTwoWay())
                         ),
@@ -238,6 +271,7 @@ angular.module('myApp.level.chart', [])
                                     maxSize: new go.Size(200, NaN),
                                     wrap: go.TextBlock.WrapFit,
                                     textAlign: "center",
+                                    textEditor: customEditor,
                                     editable: true,
                                     font: "bold 12pt Helvetica, Arial, sans-serif",
                                     stroke: '#454545'
