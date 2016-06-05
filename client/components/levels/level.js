@@ -119,7 +119,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
                         errorArray.push(errorObject);
                     }
                 }
-                else if (NodeKey === "K") {
+                else if (NodeKey.indexOf("K") != -1) {
                     if (NumberOfLink.to !== 0 || NumberOfLink.from !== 0) {
                         if (NumberOfLink.to !== 2) {
                             $scope.model.highlightNodeByKey(NodeKey, false);
