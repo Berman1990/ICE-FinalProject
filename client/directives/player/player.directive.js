@@ -176,8 +176,10 @@ angular.module('myApp.level.player', [])
 
                 function tick(event) {
                     // Are they touching?
-                    if (ndgmr.checkRectCollision(player, endPoint)) {
+                    if (ndgmr.checkRectCollision(player, endPoint) && player.isReady) {
                         console.log('done!');
+                        player.isReady = false;
+                        //$http.post( "api/users/stageComplete", { stageId: 2 } );
                         clearTimeout(scope.timeout);
                     }   
 
