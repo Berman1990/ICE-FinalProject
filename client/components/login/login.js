@@ -8,11 +8,12 @@ angular.module('myApp.login', [])
     })
   })
 
-  .controller('LoginController', function($scope, $mdToast, $auth, $rootScope) {
+  .controller('LoginController', function($scope, $mdToast, $auth, $rootScope, $window) {
     $scope.login = function() {
       $auth.login({ email: $scope.email, password: $scope.password })
         .then(loginSuccessHandler)
-        .catch(loginErrorHandler);
+
+     .catch(loginErrorHandler);
     };
 
     $scope.authenticate = function(provider) {
@@ -28,6 +29,8 @@ angular.module('myApp.login', [])
           .position('bottom right')
           .hideDelay(3000)
       );
+
+      $window.location.href = '#/stages';
     }
     function loginErrorHandler(response) {
       $mdToast.show(

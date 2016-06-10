@@ -8,7 +8,7 @@ angular.module('myApp.logout', [])
     })
   })
 
-  .controller('LogoutController', function($auth, $mdToast) {
+  .controller('LogoutController', function($auth, $mdToast, $window) {
     if (!$auth.isAuthenticated()) {
       return;
     }
@@ -20,5 +20,6 @@ angular.module('myApp.logout', [])
             .position('bottom right')
             .hideDelay(3000)
         );
+          $window.location.href = '/';
       });
   });

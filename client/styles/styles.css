@@ -53,7 +53,7 @@
 }
 
 .hero-logo {
-    width: 100%;
+
     border-radius: 2em;
     margin: 10px 0 30px 0;
     background-color: rgba(0, 0, 0, 0.6);
@@ -92,7 +92,7 @@ md-toolbar {
 
 .center-form {
     max-width: 768px;
-    margin: 38px auto;
+    margin: 20px;
     box-shadow: 0px 2px 21px 1px rgba(0, 0, 0, 0.7);
 }
 
