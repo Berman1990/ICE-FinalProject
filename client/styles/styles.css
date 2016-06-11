@@ -164,16 +164,17 @@ md-toolbar {
     width:18%;
 }
 .actionButtons {
-    display: inline-flex;
+    /*display: inline-flex;*/
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     position: relative;
-    left:20%;
+    text-align: center;
 
 }
 
 .actionButton {
 margin-right: 0 !important;
 margin-left: 0 !important;
+    display: inline;
 }
