@@ -125,7 +125,7 @@ angular.module('myApp.level.chart', [])
                     var diagram = node.diagram;
                     if (!diagram || diagram.isReadOnly || !diagram.allowLink) return;
                     node.ports.each(function(port) {
-                        port.stroke = (show ? "white" : null);
+                        port.stroke = (show ? "black" : null);
                     });
                 }
 
@@ -135,10 +135,10 @@ angular.module('myApp.level.chart', [])
                     $(go.Node, "Spot", nodeStyle(),
                         // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
                         $(go.Panel, "Auto",
-                            $(go.Shape, "Rectangle", { minSize: new go.Size(40, 60), fill: "#FFFFFF", stroke: null },
+                            $(go.Shape, "Rectangle", { minSize: new go.Size(40, 60), fill: "#F2F2F2", stroke: "transparent" },
                                 new go.Binding("figure", "figure"),
                                 new go.Binding("stroke", "isHighlighted", function(h) {
-                                    return h ? "red" : "black"; })
+                                    return h ? "transparent" : "transparent"; })
                                 .ofObject(),
                                 new go.Binding("strokeWidth", "isHighlighted", function(h) {
                                     return h ? 3 : 1; })

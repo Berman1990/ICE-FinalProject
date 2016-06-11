@@ -154,6 +154,15 @@ md-toolbar {
     background-color: #dd4b39;
     border: 1px solid #d54331;
 }
+.ice-logo {
+    display: block;
+    vertical-align: top;
+}
+
+article {
+    color: #545454;
+    text-align: left;
+}
 
 .btn-google-plus:hover,
 .btn-google-plus:focus {
