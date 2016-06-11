@@ -1,5 +1,5 @@
-<md-content layout-margin layout="column" class="center-form">
-  <section class="md-whiteframe-z1" flex>
+<md-content layout="column"  class="hero">
+  <div class="md-whiteframe-z5" flex class="center-form">
     <md-toolbar class="mute-toolbar">
       <div class="md-toolbar-tools">
         <h3>Update your profile</h3>
@@ -7,7 +7,7 @@
     </md-toolbar>
     <md-content layout-padding layput-margin layout="row">
       <div class="form-group">
-        <img class="profile-picture" ng-src="{{user.picture || 'http://placehold.it/100x100'}}">
+        <!-- <img class="profile-picture" ng-src="{{user.picture || 'http://placehold.it/100x100'}}"> -->
       </div>
       <form flex method="post" name="profileForm" ng-submit="updateProfile()">
         <md-input-container class="md-icon-float">
@@ -37,7 +37,7 @@
       </form>
     </md-content>
   </section>
-
+<!-- 
   <md-content layout-padding>
     <div layout="row" layout-margin>
       <md-button flex class="md-warn" ng-if="user.facebook" ng-click="unlink('facebook')">
@@ -53,6 +53,6 @@
         <md-icon md-svg-src="images/social-google.svg" class=" login-icon"></md-icon> Link Google Account
       </md-button>
     </div>
-  </md-content>
+  </md-content> -->
 
 </md-content>
