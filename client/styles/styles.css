@@ -100,6 +100,10 @@ md-toolbar {
 
 }
 
+.all-container {
+    height: 100%;
+}
+
 .links {
     color:black;
     display: inline;
