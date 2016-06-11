@@ -1,10 +1,6 @@
 <section class="hero" layout="column" layout-align="center center" style="height: 100%">
-    <img src="../../images/ice_text.png">
-    <div class="hero-logo" >
-
-        <div class="md-title">
-        </div>
-        <!-- <img class="title-logo" src="../../images/Ice_Block_icon.png" /> -->
+    
+    <img src="../../images/ice_text.png" style="width:100%">
 
         <md-content layout-margin class="center-form"  ng-controller="LoginController" ng-if="isAuthenticated()">
             <section class="md-whiteframe-z1 whiteframe " flex>
@@ -14,11 +10,11 @@
                     </div>
                 </md-toolbar>
                 <md-content layout="column" layout-gt-sm="row" layout-padding>
-                    <div layout="column" flex>
-                        <button class="md-button btn-facebook" ng-click="authenticate('facebook')">
+                    <div layout="column" flex class="inside-form">
+                   <!--      <button class="md-button btn-facebook" ng-click="authenticate('facebook')">
                             <md-icon md-svg-src="images/social-facebook.svg" class=" login-icon"></md-icon> Sign in with Facebook
                         </button>
-                        <button class="md-button btn-google-plus" ng-click="authenticate('google')">
+ -->                        <button class="md-button btn-google-plus" ng-click="authenticate('google')">
                             <md-icon md-svg-src="images/social-google.svg" class=" login-icon"></md-icon> Sign in with Google
                         </button>
                     </div>
@@ -27,7 +23,7 @@
                         <div>OR</div>
                         <div class="line" flex></div>
                     </div>
-                    <div flex layout="column" layout-padding layout-margin>
+                    <div flex layout="column" layout-margin>
                         <form method="post" ng-submit="login()" name="loginForm" layout="column">
                             <md-input-container class="md-icon-float">
                                 <label>Email</label>
@@ -45,8 +41,7 @@
                 </md-content>
                 <md-divider></md-divider>
                 <div layout="column" layout-align="center center">
-                    <a ui-sref="password.forgot">Forgot your password?</a>
-                    <small>Don't have an account yet? <a ui-sref="signup">Sign up</a></small>
+                    <a ui-sref="password.forgot">Forgot your password?</a>|<a ui-sref="signup">Sign up</a>
                 </div>
             </section>
         </md-content>
@@ -89,12 +84,11 @@
                     </div>
                 </md-content>
                 <md-divider></md-divider>
-                <div layout="column" layout-align="center center">
-                    <a ui-sref="password.forgot">Forgot your password?</a>
-                    <small>Don't have an account yet? <a ui-sref="signup">Sign up</a></small>
+                <div layout="column" class="links" layout-align="center center">
+                    <a ui-sref="password.forgot">Forgot your password?</a>|<a ui-sref="signup">Sign up</a>
                 </div>
             </section>
         </md-content>
 
-</div>
+
 </section>

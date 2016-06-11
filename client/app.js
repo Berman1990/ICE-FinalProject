@@ -44,7 +44,7 @@ angular.module('myApp', [
     });
 
     $authProvider.google({
-      clientId: '154995491013-9vuhtdo8drlfjql5eiesd36vm8c82i00.apps.googleusercontent.com'
+      clientId: '676415535841-8l6ej784svt61062gmqo613pb89qqcin.apps.googleusercontent.com'
     });
 
   });

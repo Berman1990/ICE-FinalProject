@@ -50,6 +50,8 @@
     color: white;
     background-image: url('../images/ice-02.jpg');
     background-size: cover;
+        height: 100%;
+    min-height: 100%;
 }
 
 .hero-logo {
@@ -89,10 +91,24 @@ md-toolbar {
 .login-box {
     position: absolute;
 }
+.inside-form {
+    padding: 0;
+}
+
+.links a {
+    display: inline;
+
+}
+
+.links {
+    color:black;
+    display: inline;
+    font-size: .7em;
+}
 
 .center-form {
     max-width: 768px;
-    margin: 20px;
+    
     box-shadow: 0px 2px 21px 1px rgba(0, 0, 0, 0.7);
 }
 

@@ -28,7 +28,7 @@ module.exports = {
   * The Google App Secret.
   * Remeber to also set the App-ID in client/app.js
   * */
-  GOOGLE_SECRET: process.env.GOOGLE_SECRET || 'Google Secret',
+  GOOGLE_SECRET: process.env.GOOGLE_SECRET || 'ItvmQSHfD9YdwXU3pampyDOY',
 
   /*
   * Sendgrid Credentials
