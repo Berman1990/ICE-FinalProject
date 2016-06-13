@@ -28,7 +28,7 @@ angular.module('myApp.stages', [])
   		$scope.stages = data;
   	});
 
-    $http.post( "api/users/stageComplete", { stageId: 2 } );
+    //$http.post( "api/users/stageComplete", { stageId: 2 } );
 
     $http.get('/api/users/me').success(function (data) {
       $scope.user = data;

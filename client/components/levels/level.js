@@ -21,7 +21,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
         })
     })
 
-    .controller('LevelController', function ($scope, $http, $stateParams) {
+    .controller('LevelController', function ($scope, $http, $stateParams, $window) {
         $scope.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
 
         $scope.model.selectedNodeData = null;
@@ -36,6 +36,20 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
         $scope.stage = new createjs.Stage(document.getElementById("code-player"));
 
         $scope.controls = {};
+
+        $scope.controls.finishLevel = function() {
+            // get level id
+            var stage = $stateParams.levelNum;
+
+            // post to server and set level done
+            $http.post( "api/users/stageComplete", { stageId: stage } );
+
+            // popup message level completed
+            alert("Level Complete!");
+
+            // return to level select
+            $window.location.href = '/#/stages';
+        }
 
         $scope.rotate = function () {
             $scope.model.highlightNodeByKey("S");
