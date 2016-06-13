@@ -179,9 +179,11 @@ angular.module('myApp.level.player', [])
                     if (ndgmr.checkRectCollision(player, endPoint) && player.isReady) {
                         console.log('done!');
                         player.isReady = false;
+
                         if (scope.playerControls.finishLevel) {
                             scope.playerControls.finishLevel();
                         }
+
                         clearTimeout(scope.timeout);
                     }
 

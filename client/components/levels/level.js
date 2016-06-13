@@ -21,7 +21,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
         })
     })
 
-    .controller('LevelController', function ($scope, $http, $stateParams, $window) {
+    .controller('LevelController', function ($scope, $http,$state,  $stateParams, $window) {
         $scope.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
 
         $scope.model.selectedNodeData = null;
@@ -48,7 +48,7 @@ angular.module('myApp.level', ['myApp.level.chart', 'myApp.level.player'])
             alert("Level Complete!");
 
             // return to level select
-            $window.location.href = '/#/stages';
+            $window.location.href = '/';
         }
 
         $scope.rotate = function () {
